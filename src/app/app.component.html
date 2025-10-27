@@ -1,29 +1,21 @@
 <header style="background-color: skyblue; height: 10vh; position: relative">
   <p style="font-size: 2rem; text-align: center; font-weight: 800">
-    臺南市鄉鎮未來3天天氣預報
+    臺南市未來3天天氣預報
   </p>
 </header>
 
 <main style="background-color: palegreen; padding: 2vh 1vw; position: relative">
   <h2>選擇地區：</h2>
-  <div
-    class="locationName"
-    style="
+  <div class="locationName" style="
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       align-items: center;
       gap: 1vw;
       margin: 2vh 0;
-    "
-  >
+    ">
     @for(item of LocationLocation; track item) {
-    <button
-      class="seven"
-      (click)="sendLocation(item)"
-      style="margin-left: 0.5vw"
-
-    >
+    <button class="seven" (click)="sendLocation(item)" style="margin-left: 0.5vw">
       {{ item.LocationName }}
     </button>
     }
@@ -31,12 +23,9 @@
 
   @if(displayInfo){
   <h2>
-    想得知<span style="color: red">{{ locationName }}</span
-    >的：
+    想得知<span style="color: red">{{ locationName }}</span>的：
   </h2>
-  <div
-    class="weatherElement"
-    style="
+  <div class="weatherElement" style="
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -44,8 +33,7 @@
       justify-content: center;
       gap: 1vw;
       margin: 2vh 0;
-    "
-  >
+    ">
     @for(list of weatherElement; track list) {
     <button class="eight" (click)="showInfo(list)" style="margin-left: 0.5vw">
       {{ list.ElementName }}
@@ -56,16 +44,14 @@
   <h3 style=" font-weight: 800; margin: 2vh 0">
     以下為{{ locationName }}{{ userInfo }}的資訊：
   </h3>
-  <div
-    style="
+  <div style="
       display: flex;
       flex-direction: row;
       gap: 1vw;
       align-items: flex-start;
       flex-wrap: wrap;
       justify-content: space-around;
-    "
-  >
+    ">
     @for(time of infoTime; track time) {
     <div style="border: 0.2vw solid black; display: flex; width: fit-content; height:fit-content;">
       @if(time.StartTime && time.EndTime) {
@@ -90,19 +76,19 @@
         <span style="color: rgb(98, 0, 255)">{{ userInfo }} </span>
         為：
         @if(userInfo == "溫度") {
-          {{ time.ElementValue?.[0]?.Temperature + "度" }}
+        {{ time.ElementValue?.[0]?.Temperature + "度" }}
         } @else if (userInfo == "露點溫度"){
-          {{ time.ElementValue?.[0]?.DewPoint + "度"}}
+        {{ time.ElementValue?.[0]?.DewPoint + "度"}}
         }@else if (userInfo == "體感溫度"){
-          {{ time.ElementValue?.[0]?.ApparentTemperature + "度"}}
+        {{ time.ElementValue?.[0]?.ApparentTemperature + "度"}}
         }@else if (userInfo == "舒適度指數"){
-          {{ time.ElementValue?.[0]?.ComfortIndex }}
+        {{ time.ElementValue?.[0]?.ComfortIndex }}
         }@else if (userInfo == "風速"){
-          {{ time.ElementValue?.[0]?.WindSpeed }}
+        {{ time.ElementValue?.[0]?.WindSpeed }}
         }@else if (userInfo == "風向"){
-          {{ time.ElementValue?.[0]?.WindDirection }}
+        {{ time.ElementValue?.[0]?.WindDirection }}
         }@else if (userInfo =="相對濕度"){
-          {{ time.ElementValue?.[0]?.RelativeHumidity }}
+        {{ time.ElementValue?.[0]?.RelativeHumidity }}
         }
       </h3>
       }
@@ -112,20 +98,14 @@
   }
 </main>
 
-<footer
-  style="
+<footer style="
     background-color: burlywood;
     text-align: center;
     position: relative;
     bottom: 0;
     width: 100%;
-  "
->
+  ">
   <h2>
-    資料來源為<br><a
-      href="https://opendata.cwa.gov.tw/dist/opendata-swagger.html"
-      style="color: darkblue"
-      >中央氣象署－氣象資料開放平臺</a
-    >
+    資料來源為<br><a href="https://opendata.cwa.gov.tw/dist/opendata-swagger.html" style="color: darkblue">中央氣象署－氣象資料開放平臺</a>
   </h2>
 </footer>
